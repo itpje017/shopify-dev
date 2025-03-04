@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "main": "web/index.js",
   "license": "UNLICENSED",
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "shopify": "shopify",
-    "build": "cd web/frontend && npm install && npm run build",
+    "build": "shopify app build",
     "dev": "node server.js",
     "info": "shopify app info",
     "generate": "shopify app generate",
@@ -33,8 +30,6 @@
     "shopify-api-node": "^3.14.2"
   },
   "devDependencies": {
-    "@shopify/cli": "^3.76.0",
-    "@shopify/app": "^3.58.2",
     "eslint": "^8.0.0",
     "prettier": "^2.0.0"
   },
