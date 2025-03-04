@@ -4,8 +4,7 @@
   "main": "web/index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "postinstall": "npm install @shopify/cli",
-    "build": "npx shopify app build",
+    "build": "npm install -g @shopify/cli && shopify app build",
     "dev": "node server.js",
     "info": "npx shopify app info",
     "generate": "npx shopify app generate",
