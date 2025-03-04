@@ -1,0 +1,51 @@
+{
+  "name": "airventory",
+  "version": "1.0.0",
+  "main": "web/index.js",
+  "license": "UNLICENSED",
+  "scripts": {
+    "shopify": "shopify",
+    "build": "shopify app build",
+    "dev": "node server.js",
+    "info": "shopify app info",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cookie": "^1.0.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "fs": "^0.0.1-security",
+    "mariadb": "^3.4.0",
+    "module-alias": "^2.2.3",
+    "nonce": "^1.0.4",
+    "path": "^0.12.7",
+    "querystring": "^0.2.1",
+    "request-promise": "^4.2.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^2.0.0"
+  },
+  "author": "DELL",
+  "private": true,
+  "workspaces": [
+    "extensions/*",
+    "web",
+    "web/frontend"
+  ],
+  "_moduleAliases": {
+    "@authController": "controller/auth",
+    "@authRouter": "router/auth",
+    "@productController": "controller/product",
+    "@productRouter": "router/product",
+    "@orderController": "controller/order",
+    "@middleware": "middleware/commonMiddleware",
+    "@orderRouter": "router/order"
+  }
+}
