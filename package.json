@@ -4,11 +4,12 @@
   "main": "web/index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm install -g @shopify/cli && shopify app build",
+    "shopify": "shopify",
+    "build": "shopify app build",
     "dev": "node server.js",
-    "info": "npx shopify app info",
-    "generate": "npx shopify app generate",
-    "deploy": "npx shopify app deploy",
+    "info": "shopify app info",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy",
     "test": "jest"
   },
   "dependencies": {
@@ -29,7 +30,6 @@
     "shopify-api-node": "^3.14.2"
   },
   "devDependencies": {
-    "@shopify/cli": "^3.76.0",
     "eslint": "^8.0.0",
     "prettier": "^2.0.0"
   },
