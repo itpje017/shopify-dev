@@ -18,7 +18,7 @@ const createProduct = async (productData, res) => {
     try {
        
         var sync_entry = productData.sync_entry;
-console.log(productData);
+
 
         if (!productData || !productData.shop_data || !productData.data) {
             await sendWebhook(false, null, sync_entry, "PRODUCT_CREATION_FAILED", "Invalid product data");
