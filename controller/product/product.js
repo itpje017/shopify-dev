@@ -2,10 +2,10 @@ const axios = require("axios");
 const Shopify = require("shopify-api-node");
 const productPath = require('@productRouter/productPath');
 
-const sendWebhook = async (success, data, sync_entry = null, eventType, errorMessage = null) => {
+const sendWebhook = async (success, data, sync_entry = null, eventType, message = null) => {
     try {
         const webhookUrl = `${process.env.WEBHOOK_URL}/${productPath.PRODUCT_RESPONSE_WEBHOOK_URL}`;
-        await axios.post(webhookUrl, { success, eventType, data, sync_entry, errorMessage },
+        await axios.post(webhookUrl, { success, eventType, data, sync_entry, message },
             {
                 headers: { "Content-Type": "application/json" }
             });
