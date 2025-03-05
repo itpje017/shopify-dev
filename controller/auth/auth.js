@@ -57,6 +57,7 @@ const oAuthCallback = async (req, res) => {
             code,
         });
         const access_token = tokenResponse.data.access_token;
+        console.log(access_token);
         
         await createWebhook(shop, access_token);
 

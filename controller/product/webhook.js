@@ -5,7 +5,7 @@ const productWebhook = async (req, res) => {
     try {
         const productData = req.body;
 
-    
+
         // Validate required fields
         if (!productData) {
             return res.status(400).json({ error: "Invalid product data received" });

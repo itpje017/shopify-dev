@@ -37,7 +37,7 @@ module.exports = {
             }
 
             // Create new webhook if it doesn't exist
-            const newWebhook = await shopify.webhook.create({ topic, address: webhookUrl,format: "json" });
+            const newWebhook = await shopify.webhook.create({ topic, address: webhookUrl,format: "json", });
             return newWebhook;
 
         } catch (error) {

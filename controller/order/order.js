@@ -2,7 +2,7 @@ const axios = require("axios");
 const orderPath = require("@orderRouter/orderPath");
 
 const sendWebhook = async (success, data, eventType, errorMessage = null) => {
-    const webhookUrl = `${process.env.WEBHOOK_URL}/${orderPath.ORDER_RESPONSE_WEBHOOK_URL}`;
+    const webhookUrl = `${process.env.ORDER_WEBHOOK_URL}/${orderPath.ORDER_RESPONSE_WEBHOOK_URL}`;
     const payload = { success, data, eventType, errorMessage };
     try {
         await axios.post(webhookUrl, payload, { headers: { "Content-Type": "application/json" } });
@@ -10,10 +10,10 @@ const sendWebhook = async (success, data, eventType, errorMessage = null) => {
         console.error("Webhook error:", {message: error.message });
     }
 };
-
-
-
+// create order
 const orders = async (req, res) => {
+    const shop = req.headers["x-shopify-shop-domain"];
+  
     // Validate request body
     if (!req.body?.line_items) {
         await sendWebhook(false, null, "ORDER_CREATION_FAILED", "Invalid order data");

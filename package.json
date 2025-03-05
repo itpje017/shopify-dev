@@ -5,6 +5,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "shopify": "shopify",
+    "preinstall": "npm install -g @shopify/cli",
     "build": "shopify app build",
     "dev": "node server.js",
     "info": "shopify app info",

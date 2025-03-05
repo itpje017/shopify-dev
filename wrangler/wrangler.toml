@@ -1,0 +1,10 @@
+name = "Airventory Product"
+type = "javascript"   
+
+workers_dev = true
+compatibility_date = "2024-03-04"
+
+[vars]
+SHOPIFY_API_KEY = "8d55e73b24f1f5aceeb012e58bc6d5f6"
+SHOPIFY_API_SECRET = "4243e30976f956b6e35c146b5a7414ef"
+SESSION_SECRET = "9a87sdf97a9sdf08s7df0897asfdas78df"
