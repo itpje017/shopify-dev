@@ -2,7 +2,7 @@ const axios = require("axios");
 const orderPath = require("@orderRouter/orderPath");
 
 const sendWebhook = async (success, data, eventType, message = null) => {
-    const webhookUrl = `${process.env.ORDER_WEBHOOK_URL}/${orderPath.ORDER_RESPONSE_WEBHOOK_URL}`;
+    const webhookUrl = `${process.env.WEBHOOK_URL}/${orderPath.ORDER_RESPONSE_WEBHOOK_URL}`;
     const payload = { success, data, eventType, message };
     try {
         await axios.post(webhookUrl, payload, { headers: { "Content-Type": "application/json" } });

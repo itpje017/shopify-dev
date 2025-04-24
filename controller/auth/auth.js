@@ -57,12 +57,12 @@ const oAuthCallback = async (req, res) => {
             code,
         });
         const access_token = tokenResponse.data.access_token;
-        console.log(access_token);
-        
+   
         await createWebhook(shop, access_token);
 
         const combinedData = { shop, access_token };
         const encodedData = Buffer.from(JSON.stringify(combinedData)).toString("base64");
+
 
         res.redirect(`${REDIRECT_AFTER_INSTALL}?data=${encodedData}`);
     } catch (error) {

@@ -28,7 +28,6 @@ module.exports = {
             const webhooks = await shopify.webhook.list();
             const webhookUrl = `${NGROK_URL}/webhook/orders`;
             const topic = "orders/create";
-
             // Check if the webhook already exists
             const exists = webhooks.some(w => w.topic === topic && w.address === webhookUrl);
 

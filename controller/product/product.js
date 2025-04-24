@@ -5,6 +5,8 @@ const productPath = require('@productRouter/productPath');
 const sendWebhook = async (success, data, sync_entry = null, eventType, message = null) => {
     try {
         const webhookUrl = `${process.env.WEBHOOK_URL}/${productPath.PRODUCT_RESPONSE_WEBHOOK_URL}`;
+       console.log(webhookUrl);
+        
         await axios.post(webhookUrl, { success, eventType, data, sync_entry, message },
             {
                 headers: { "Content-Type": "application/json" }
@@ -18,8 +20,6 @@ const createProduct = async (productData, res) => {
     try {
        
         var sync_entry = productData.sync_entry;
-
-
         if (!productData || !productData.shop_data || !productData.data) {
             await sendWebhook(false, null, sync_entry, "PRODUCT_CREATION_FAILED", "Invalid product data");
             return;
@@ -33,8 +33,10 @@ const createProduct = async (productData, res) => {
         }
 
 
+
         const shopify = new Shopify({ shopName: shop.replace(".myshopify.com", ""), accessToken: token });
         const createdProduct = await shopify.product.create(productData.data.product);
+
 
         if (!createdProduct?.id) {
             await sendWebhook(false, null, sync_entry, "PRODUCT_CREATION_FAILED", "Product creation failed on Shopify");

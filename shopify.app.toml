@@ -1,10 +1,10 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "8d55e73b24f1f5aceeb012e58bc6d5f6"
-application_url = "https://witty-werewolf-positively.ngrok-free.app/"
-embedded = true
 name = "Airventory Product"
 handle = "airventory-product"
+application_url = "https://witty-werewolf-positively.ngrok-free.app/"
+embedded = true
 
 [build]
 automatically_update_urls_on_dev = false
