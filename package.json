@@ -14,6 +14,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@shopify/app-bridge": "^3.7.10",
+    "@shopify/app-bridge-react": "^4.1.10",
+    "@shopify/shopify-api": "^11.12.0",
     "axios": "^1.7.9",
     "cookie": "^1.0.2",
     "cors": "^2.8.5",
@@ -27,7 +30,8 @@
     "nonce": "^1.0.4",
     "path": "^0.12.7",
     "querystring": "^0.2.1",
-    "request-promise": "^4.2.6",
+    "react-router-dom": "7.5.2",
+    "request-promise": "^0.0.1",
     "shopify-api-node": "^3.14.2"
   },
   "devDependencies": {

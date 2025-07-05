@@ -3,42 +3,39 @@ require("module-alias/register");
 
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
-const session = require('express-session');
-
+const session = require("express-session");
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 // Middleware
-app.use(express.json({limit: '2mb'}));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.json({ limit: "2mb", verify: (req, res, buf) => { req.rawBody = buf.toString() } }));
+app.use(express.urlencoded({ extended: true, verify: (req, res, buf) => { req.rawBody = buf.toString()} }));
 
-// CORS Setup (Modify Allowed Origins as Needed)
+// CORS Setup
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(",") : "*",
+  origin: process.env.ALLOWED_ORIGINS?.split(",") || "*",
   credentials: true,
 }));
 
-// Session Configuration
+// Session Configuration (for your own backend APIs, if needed)
 app.use(session({
   secret: process.env.SESSION_SECRET || "production_secret",
   resave: false,
   saveUninitialized: true,
   cookie: {
     secure: false,
-    httpOnly: true, sameSite: "lax",
-    maxAge: 24 * 60 * 60 * 1000, 
-  }
+    httpOnly: true,
+    sameSite: "lax",
+    maxAge: 24 * 60 * 60 * 1000,
+  },
 }));
 
-// router
+// Your custom backend routes
 app.use(require('./router/router'));
-
-// Global Error Handling Middleware
+// Global error handler
 app.use((err, req, res, next) => {
+  console.error("Unhandled error:", err);
   res.status(500).json({ error: "Internal Server Error" });
 });
 
-
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+// Start server
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

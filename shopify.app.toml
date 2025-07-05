@@ -1,10 +1,10 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "8d55e73b24f1f5aceeb012e58bc6d5f6"
-name = "Airventory Product"
-handle = "airventory-product"
+client_id = "3675e9c0a90831da85133430eb2677f3"
+name = "Airventory Partners"
+handle = "airventory-partner"
 application_url = "https://witty-werewolf-positively.ngrok-free.app/"
-embedded = true
+embedded = false
 
 [build]
 automatically_update_urls_on_dev = false
@@ -13,13 +13,26 @@ include_config_on_deploy = true
 [webhooks]
 api_version = "2025-01"
 
+  [[webhooks.subscriptions]]
+  uri = "https://witty-werewolf-positively.ngrok-free.app/webhooks/customers/data_request"
+  compliance_topics = [ "customers/data_request" ]
+
+  [[webhooks.subscriptions]]
+  uri = "https://node.airventory.io/webhooks/customers/redact"
+  compliance_topics = [ "customers/redact" ]
+
+  [[webhooks.subscriptions]]
+  uri = "https://node.airventory.io/webhooks/shop/redact"
+  compliance_topics = [ "shop/redact" ]
+
 [access.admin]
 direct_api_mode = "online"
 
 [auth]
 redirect_urls = [
   "https://witty-werewolf-positively.ngrok-free.app/auth/callback",
-  "https://airventory.io/auth/callback"
+  "https://witty-werewolf-positively.ngrok-free.app/api/auth/callback",
+  "https://app.airventory.io/auth/callback"
 ]
 
 [pos]
